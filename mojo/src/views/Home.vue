@@ -1,8 +1,11 @@
 <template>
   <div class="home"></div>
 
-  <h1 ref="p">This name is {{ name }} and age is {{ age }}</h1>
+  <h1>This name is {{ name }} and age is {{ age }}</h1>
   <button @click="handleClick">click me</button>
+  <input type="text" v-model="name" />
+
+  <button @click.prevent="age++">Age</button>
 </template>
 
 <script>
@@ -13,22 +16,20 @@ export default {
   setup() {
     console.log(this);
 
-    const p = ref("ami ref er custom data");
-    console.log(p, p.value);
-    let name = "mastrer man";
-    let age = "26";
+    // const p = ref("ami ref er custom data");
+    // console.log(p, p.value);
+    const name = ref("mastrer man");
+    const age = ref(33);
 
     const handleClick = () => {
-      console.log(p, p.value);
-      p.value.classList.add("test");
-      p.value.textContent = "Amar kono kaj nai nak";
+      name.value = "ami ki ar bolbo";
+      age.value = 22;
     };
 
     return {
       name,
       age,
       handleClick,
-      p,
     };
   },
 };
