@@ -10,13 +10,25 @@
 </template>
 
 <script>
-import { computed, ref } from "@vue/reactivity";
+import { computed, ref , watch, watchEffect } from "vue";
 export default {
   name: "Home",
 
   setup() {
     const search = ref("")
     const names = ref(['morgan','massi','trump','azam','malik','ronaldo']);
+
+    watch(search , () =>{
+      console.log('watch function run');
+    })
+
+
+    watchEffect(() => {
+      console.log('watch effect function run',search.value);
+    })
+
+
+
 
     const machingNames = computed(() =>{
       return names.value.filter((name) => name.includes(search.value))
